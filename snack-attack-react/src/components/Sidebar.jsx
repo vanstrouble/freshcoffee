@@ -1,4 +1,5 @@
 import { categories } from "../data/categories"
+import Category from "./Category"
 
 export default function Sidebar() {
     return (
@@ -13,8 +14,19 @@ export default function Sidebar() {
 
             <div className="mt-10">
                 {categories.map(category => (
-                    <p key={category.id}>{category.name}</p>
+                    <Category
+                        category={category}
+                    />
                 ))}
+            </div>
+
+            <div className="my-5 px-5">
+                <button
+                    type="button"
+                    className="text-center bg-red-500 w-full p-3 font-bold text-white truncate rounded-md"
+                >
+                    Order cancellation
+                </button>
             </div>
         </aside>
     )
