@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function Category({category}) {
 
     const { id, icon, name } = category
@@ -11,7 +13,14 @@ export default function Category({category}) {
             />
 
             <p className="text-lg font-bold cursor-pointer truncate">{name}</p>
-
         </div>
-    )
+    );
 }
+
+Category.propTypes = {
+    category: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        icon: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    }).isRequired,
+};
