@@ -1,17 +1,50 @@
 import { Outlet } from 'react-router-dom'
+import ReactModal from 'react-modal'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
+import useKiosk from '../hooks/useKiosk'
+
+const customStyles = {
+    content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+    },
+};
 
 export default function Layout() {
+
+    const { modal, handleClickModal } = useKiosk();
+
     return (
-        <div className='md:flex'>
-            <Sidebar />
+        <>
+            <div className='md:flex'>
+                <Sidebar />
 
-            <main className='flex-1 h-screen overflow-y-scroll bg-gray-100 p-3'>
-                <Outlet />
-            </main>
+                <main className='flex-1 h-screen overflow-y-scroll bg-gray-100 p-3'>
+                    <Outlet />
+                </main>
 
-            <Summary />
-        </div>
+                <Summary />
+            </div>
+
+            {modal && (
+                <ReactModal
+                    isOpen={modal}
+                    style={customStyles}
+                >
+                    <p>From Modal</p>
+                    <button
+                        type="button"
+                        onClick={handleClickModal}
+                    >
+                        Close
+                    </button>
+                </ReactModal>
+            )}
+        </>
     )
 }
