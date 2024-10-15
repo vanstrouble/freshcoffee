@@ -338,77 +338,77 @@ const products = [
       {
         name: "Spicy Pizza with Double Cheese",
         price: 69.9,
-        image: "pizza_01",
+        image: "pizzas_01",
         category_id: 3,
         id: 49
       },
       {
         name: "Ham and Cheese Pizza",
         price: 69.9,
-        image: "pizza_02",
+        image: "pizzas_02",
         category_id: 3,
         id: 50
       },
       {
         name: "Double Cheese Pizza",
         price: 69.9,
-        image: "pizza_03",
+        image: "pizzas_03",
         category_id: 3,
         id: 51
       },
       {
         name: "House Special Pizza",
         price: 69.9,
-        image: "pizza_04",
+        image: "pizzas_04",
         category_id: 3,
         id: 52
       },
       {
         name: "Chorizo Pizza",
         price: 69.9,
-        image: "pizza_05",
+        image: "pizzas_05",
         category_id: 3,
         id: 53
       },
       {
         name: "Hawaiian Pizza",
         price: 69.9,
-        image: "pizza_06",
+        image: "pizzas_06",
         category_id: 3,
         id: 54
       },
       {
         name: "Bacon Pizza",
         price: 69.9,
-        image: "pizza_07",
+        image: "pizzas_07",
         category_id: 3,
         id: 55
       },
       {
         name: "Vegetable and Cheese Pizza",
         price: 69.9,
-        image: "pizza_08",
+        image: "pizzas_08",
         category_id: 3,
         id: 56
       },
       {
         name: "Pepperoni and Cheese Pizza",
         price: 69.9,
-        image: "pizza_09",
+        image: "pizzas_09",
         category_id: 3,
         id: 57
       },
       {
         name: "Olives and Cheese Pizza",
         price: 69.9,
-        image: "pizza_10",
+        image: "pizzas_10",
         category_id: 3,
         id: 58
       },
       {
         name: "Cheese, Ham, and Mushroom Pizza",
         price: 69.9,
-        image: "pizza_11",
+        image: "pizzas_11",
         category_id: 3,
         id: 59
       }
