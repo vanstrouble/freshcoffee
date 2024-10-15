@@ -3,6 +3,7 @@ import ReactModal from 'react-modal'
 import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
 import useKiosk from '../hooks/useKiosk'
+import ModalProduct from '../components/ModalProduct'
 
 const customStyles = {
     content: {
@@ -14,6 +15,8 @@ const customStyles = {
         transform: "translate(-50%, -50%)",
     },
 };
+
+ReactModal.setAppElement("#root");
 
 export default function Layout() {
 
@@ -31,20 +34,12 @@ export default function Layout() {
                 <Summary />
             </div>
 
-            {modal && (
-                <ReactModal
-                    isOpen={modal}
-                    style={customStyles}
-                >
-                    <p>From Modal</p>
-                    <button
-                        type="button"
-                        onClick={handleClickModal}
-                    >
-                        Close
-                    </button>
-                </ReactModal>
-            )}
+            <ReactModal
+                isOpen={modal}
+                style={customStyles}
+            >
+                <ModalProduct></ModalProduct>
+            </ReactModal>
         </>
     )
 }
