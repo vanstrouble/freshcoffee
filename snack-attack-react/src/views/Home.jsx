@@ -1,11 +1,16 @@
 import Product from '../components/Product'
-import { products } from '../data/products'
+import { products as data } from '../data/products'
+import useKiosk from '../hooks/useKiosk'
 
 export default function Home() {
-    console.log(products)
+
+    const { actualCategory } = useKiosk();
+
+    const products = data.filter(product => product.category_id === actualCategory.id);
+
     return (
         <>
-            <h1 className='text-4xl font-black'>Home</h1>
+            <h1 className='text-4xl font-black'>{ actualCategory.name }</h1>
             <p className='text-2xl my-10'>
                 Choose and customize your order below:
             </p>
