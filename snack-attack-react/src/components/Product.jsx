@@ -5,7 +5,7 @@ import useKiosk from "../hooks/useKiosk";
 export default function Product({ product }) {
 
     const { image, name, price } = product
-    const { handleClickModal } = useKiosk();
+    const { handleClickModal, handleSetProduct } = useKiosk();
 
     return (
         <div className="border p-3 shadow bg-white rounded-sm flex flex-col justify-between h-full">
@@ -25,7 +25,10 @@ export default function Product({ product }) {
 
                     <button
                         className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md"
-                        onClick={() => handleClickModal(product)}
+                        onClick={() => {
+                            handleClickModal();
+                            handleSetProduct(product)
+                        }}
                     >
                         Add to cart
                     </button>
