@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function ModalProduct() {
 
-    const { product, handleClickModal } = useKiosk();
+    const { product, handleClickModal, handleAddToCart } = useKiosk();
     const [quantity, setQuantity] = useState(1);
 
     return (
@@ -52,7 +52,7 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={() => {
-                            if (quantity >= 5) return
+                            if (quantity >= 10) return
                             setQuantity(quantity + 1);
                         }}
                     >
@@ -64,7 +64,12 @@ export default function ModalProduct() {
 
                 <button
                     type="button"
-                    className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md">
+                    className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md"
+                    onClick={() => {
+                        handleAddToCart({...product, quantity});
+                        handleClickModal();
+                    }}
+                >
                     Add to order
                 </button>
             </div>

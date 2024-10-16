@@ -25,6 +25,10 @@ const KioskProvider = ({ children }) => {
         setProduct(product);
     }
 
+    const handleAddToCart = ({category_id, image, ...product}) => {
+        setCart([...cart, product]);
+    }
+
     return (
         <KioskContext.Provider
             value={{
@@ -36,6 +40,7 @@ const KioskProvider = ({ children }) => {
                 product,
                 handleSetProduct,
                 cart,
+                handleAddToCart
             }}>
                 {children}
         </KioskContext.Provider>

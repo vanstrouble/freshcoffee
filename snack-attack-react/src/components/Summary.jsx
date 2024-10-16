@@ -1,4 +1,5 @@
 import useKiosk from "../hooks/useKiosk"
+import SummaryProduct from "./SummaryProduct";
 
 export default function Summary() {
 
@@ -19,7 +20,12 @@ export default function Summary() {
                         Your cart is empty
                     </p>
                 ) : (
-                    <p>There&apos;s something in your cart</p>
+                    cart.map(product => (
+                        <SummaryProduct
+                            key={product.id}
+                            product={product}
+                        />
+                    ))
                 )}
             </div>
 
