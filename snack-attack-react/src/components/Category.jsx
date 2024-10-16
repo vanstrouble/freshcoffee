@@ -7,20 +7,19 @@ export default function Category({ category }) {
     const { id, icon, name } = category
 
     return (
-        <div className={`${actualCategory.id === id ? "bg-amber-400" : 'bg-white'} flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer`}>
+        <div
+            className={`${actualCategory.id === id ? "bg-amber-400" : 'bg-white'} flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer`}
+            onClick={() => handleClickCategory(id)}
+        >
             <img
                 src={`/img/icon_${icon}.svg`}
                 alt="Icon image"
                 className="w-12"
             />
 
-            <button
-                className="text-lg font-bold cursor-pointer truncate"
-                type='button'
-                onClick={() => handleClickCategory(id)}
-            >
+            <span className="text-lg font-bold truncate">
                 {name}
-            </button>
+            </span>
         </div>
     );
 }

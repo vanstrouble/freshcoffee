@@ -38,7 +38,7 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={() => {
-                            if(quantity <= 1) return
+                            if (quantity <= 1) return
                             setQuantity(quantity - 1);
                         }}
                     >
@@ -52,7 +52,7 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={() => {
-                            if(quantity >= 5) return
+                            if (quantity >= 5) return
                             setQuantity(quantity + 1);
                         }}
                     >
