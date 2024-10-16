@@ -15,12 +15,13 @@ export default function Home() {
                 Choose and customize your order below:
             </p>
 
-            <div className='grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
+            <div className='grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
                 {products.map((product) => (
-                    <Product
-                    key={product.image}
-                    product={product}
-                    />
+                    <div key={product.image} className='max-w-xs mx-auto'>
+                        <Product
+                            product={product}
+                        />
+                    </div>
                 ))}
             </div>
         </>
