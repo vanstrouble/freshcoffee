@@ -26,7 +26,12 @@ const KioskProvider = ({ children }) => {
     }
 
     const handleAddToCart = ({category_id, image, ...product}) => {
-        setCart([...cart, product]);
+        if(cart.some( cartState => cartState.id === product.id)) {
+            const updatedCart = cart.map( cartState => cartState.id === product.id ? product : cartState);
+            setCart(updatedCart);
+        } else {
+            setCart([...cart, product]);
+        }
     }
 
     return (
