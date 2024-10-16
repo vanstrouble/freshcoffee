@@ -1,5 +1,6 @@
-import { createContext, useState } from "react"
 import PropTypes from 'prop-types';
+import { createContext, useState } from "react"
+import { toast } from "react-toastify";
 import { categories as categoriesDB } from "../data/categories"
 
 const KioskContext = createContext()
@@ -25,12 +26,14 @@ const KioskProvider = ({ children }) => {
         setProduct(product);
     }
 
-    const handleAddToCart = ({category_id, image, ...product}) => {
-        if(cart.some( cartState => cartState.id === product.id)) {
-            const updatedCart = cart.map( cartState => cartState.id === product.id ? product : cartState);
+    const handleAddToCart = ({ category_id, image, ...product }) => {
+        if (cart.some(cartState => cartState.id === product.id)) {
+            const updatedCart = cart.map(cartState => cartState.id === product.id ? product : cartState);
             setCart(updatedCart);
+            toast.success(`${product.name} updated successfully`);
         } else {
             setCart([...cart, product]);
+            toast.success(`${product.name} added to cart`);
         }
     }
 
@@ -47,7 +50,7 @@ const KioskProvider = ({ children }) => {
                 cart,
                 handleAddToCart
             }}>
-                {children}
+            {children}
         </KioskContext.Provider>
     )
 }
