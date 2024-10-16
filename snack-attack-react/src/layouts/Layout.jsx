@@ -20,7 +20,7 @@ ReactModal.setAppElement("#root");
 
 export default function Layout() {
 
-    const { modal, handleClickModal } = useKiosk();
+    const { modal } = useKiosk();
 
     return (
         <>

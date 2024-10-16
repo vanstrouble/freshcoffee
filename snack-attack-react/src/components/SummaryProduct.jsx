@@ -57,7 +57,7 @@ export default function SummaryProduct({ product }) {
 
 SummaryProduct.propTypes = {
     product: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         quantity: PropTypes.number.isRequired,

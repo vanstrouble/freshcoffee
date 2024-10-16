@@ -1,11 +1,20 @@
 import useKiosk from "../hooks/useKiosk"
 import { formatPrice } from "../helpers";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ModalProduct() {
 
-    const { product, handleClickModal, handleAddToCart } = useKiosk();
+    const { product, handleClickModal, handleAddToCart, cart } = useKiosk();
     const [quantity, setQuantity] = useState(1);
+    const [edition, setEdition] = useState(false);
+
+    useEffect(() => {
+        if(cart.some( cartState => cartState.id === product.id)) {
+            const productEdition = cart.filter( cartState => cartState.id === product.id)[0];
+            setQuantity(productEdition.quantity);
+            setEdition(true);
+        }
+    }, [cart, product.id]);
 
     return (
         <div className="md:flex gap-10">
@@ -52,7 +61,7 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={() => {
-                            if (quantity >= 10) return
+                            if (quantity >= 9) return
                             setQuantity(quantity + 1);
                         }}
                     >
@@ -70,7 +79,7 @@ export default function ModalProduct() {
                         handleClickModal();
                     }}
                 >
-                    Add to order
+                    {edition ? 'Edit order' : 'Add to cart'}
                 </button>
             </div>
         </div>
