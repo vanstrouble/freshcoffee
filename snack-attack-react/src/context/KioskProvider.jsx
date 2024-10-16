@@ -26,7 +26,7 @@ const KioskProvider = ({ children }) => {
         setProduct(product);
     }
 
-    const handleAddToCart = ({ category_id, image, ...product }) => {
+    const handleAddToCart = ({ category_id, ...product }) => {
         if (cart.some(cartState => cartState.id === product.id)) {
             const updatedCart = cart.map(cartState => cartState.id === product.id ? product : cartState);
             setCart(updatedCart);
@@ -35,6 +35,12 @@ const KioskProvider = ({ children }) => {
             setCart([...cart, product]);
             toast.success(`${product.name} added to cart`);
         }
+    }
+
+    const handleUpdateCart = id => {
+        const updatedProduct = cart.filter(product => product.id === id)[0];
+        setProduct(updatedProduct);
+        setModal(!modal);
     }
 
     return (
@@ -48,7 +54,8 @@ const KioskProvider = ({ children }) => {
                 product,
                 handleSetProduct,
                 cart,
-                handleAddToCart
+                handleAddToCart,
+                handleUpdateCart
             }}>
             {children}
         </KioskContext.Provider>
