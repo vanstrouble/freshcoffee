@@ -10,6 +10,7 @@ const KioskProvider = ({ children }) => {
     const [actualCategory, setActualCategory] = useState(categories[0]);
     const [modal, setModal] = useState(false);
     const [product, setProduct] = useState({});
+    const [cart, setCart] = useState([]);
 
     const handleClickCategory = id => {
         const category = categories.filter(category => category.id === id)[0];
@@ -33,7 +34,8 @@ const KioskProvider = ({ children }) => {
                 modal,
                 handleClickModal,
                 product,
-                handleSetProduct
+                handleSetProduct,
+                cart,
             }}>
                 {children}
         </KioskContext.Provider>
