@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
 import { categories as categoriesDB } from "../data/categories"
 
@@ -12,6 +12,12 @@ const KioskProvider = ({ children }) => {
     const [modal, setModal] = useState(false);
     const [product, setProduct] = useState({});
     const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+        setTotal(total);
+    }, [cart]);
 
     const handleClickCategory = id => {
         const category = categories.filter(category => category.id === id)[0];
@@ -62,7 +68,8 @@ const KioskProvider = ({ children }) => {
                 cart,
                 handleAddToCart,
                 handleUpdateCart,
-                handleRemoveCart
+                handleRemoveCart,
+                total,
             }}>
             {children}
         </KioskContext.Provider>

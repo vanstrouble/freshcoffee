@@ -1,9 +1,11 @@
 import useKiosk from "../hooks/useKiosk"
 import SummaryProduct from "./SummaryProduct";
+import { formatPrice } from '../helpers';
+
 
 export default function Summary() {
 
-    const { cart } = useKiosk();
+    const { cart, total } = useKiosk();
 
     return (
         <aside className="md:w-72 h-screen overflow-y-scroll p-5">
@@ -30,7 +32,7 @@ export default function Summary() {
             </div>
 
             <p className="text-xl mt-10">
-                Total: $0.00
+                Total: {formatPrice(total)}
             </p>
 
             <form action="#" className="w-full">
