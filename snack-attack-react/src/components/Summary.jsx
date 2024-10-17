@@ -7,6 +7,8 @@ export default function Summary() {
 
     const { cart, total } = useKiosk();
 
+    const checkCart = () => cart.length === 0;
+
     return (
         <aside className="md:w-72 h-screen overflow-y-scroll p-5">
             <h1 className="text-4xl font-black">
@@ -39,8 +41,9 @@ export default function Summary() {
                 <div className="mt-5">
                     <input
                         type="submit"
-                        className="bg-green-600 hover:bg-green-800 text-white w-full p-3 uppercase font-bold rounded-md cursor-pointer"
+                        className={`${checkCart() ? 'bg-green-100' : 'bg-green-600 hover:bg-green-900'} text-white w-full p-3 uppercase font-bold rounded-md cursor-pointer`}
                         value="Checkout"
+                        disabled={checkCart()}
                     />
                 </div>
             </form>
