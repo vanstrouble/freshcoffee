@@ -43,6 +43,12 @@ const KioskProvider = ({ children }) => {
         setModal(!modal);
     }
 
+    const handleRemoveCart = id => {
+        const updatedCart = cart.filter(product => product.id !== id);
+        setCart(updatedCart);
+        toast.error('Product removed from cart');
+    }
+
     return (
         <KioskContext.Provider
             value={{
@@ -55,7 +61,8 @@ const KioskProvider = ({ children }) => {
                 handleSetProduct,
                 cart,
                 handleAddToCart,
-                handleUpdateCart
+                handleUpdateCart,
+                handleRemoveCart
             }}>
             {children}
         </KioskContext.Provider>

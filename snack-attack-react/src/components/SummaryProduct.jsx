@@ -4,7 +4,7 @@ import useKiosk from '../hooks/useKiosk';
 
 export default function SummaryProduct({ product }) {
 
-    const { handleUpdateCart } = useKiosk();
+    const { handleUpdateCart, handleRemoveCart } = useKiosk();
     const { id, name, price, quantity } = product;
 
     return (
@@ -38,6 +38,7 @@ export default function SummaryProduct({ product }) {
                 <button
                     type="button"
                     className="bg-red-700 p-2 text-white rounded-md font-bold uppercase shadow-md text-center"
+                    onClick={() => handleRemoveCart(id)}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
