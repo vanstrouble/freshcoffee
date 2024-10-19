@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
-import axios from 'axios';
+import axiosInstance from '../config/axios';
 
 const KioskContext = createContext()
 
@@ -21,7 +21,7 @@ const KioskProvider = ({ children }) => {
 
     const fetchCategories = async () => {
         try {
-            const {data} = await axios.get('http://127.0.0.1:8000/api/categories');
+            const {data} = await axiosInstance('/api/categories');
             setCategories(data.data);
             setActualCategory(data.data[0]);
         } catch (error) {
@@ -46,6 +46,7 @@ const KioskProvider = ({ children }) => {
         setProduct(product);
     }
 
+    // eslint-disable-next-line no-unused-vars
     const handleAddToCart = ({ category_id, ...product }) => {
         if (cart.some(cartState => cartState.id === product.id)) {
             const updatedCart = cart.map(cartState => cartState.id === product.id ? product : cartState);
