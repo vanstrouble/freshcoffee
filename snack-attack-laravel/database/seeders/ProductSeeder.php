@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Caramel Coffee with Chocolate",
                 'price' => 59.9,
-                'image' => "caffee_01",
+                'image' => "coffee_01",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Cold Coffee with Chocolate",
                 'price' => 49.9,
-                'image' => "caffee_02",
+                'image' => "coffee_02",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Cold Latte with Chocolate",
                 'price' => 54.9,
-                'image' => "caffee_03",
+                'image' => "coffee_03",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Cold Latte with Chocolate",
                 'price' => 54.9,
-                'image' => "caffee_04",
+                'image' => "coffee_04",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Cold Milkshake with Chocolate",
                 'price' => 54.9,
-                'image' => "caffee_05",
+                'image' => "coffee_05",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -63,7 +63,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Small Hot Mocha Coffee",
                 'price' => 39.9,
-                'image' => "caffee_06",
+                'image' => "coffee_06",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Hot Mocha Coffee with Chocolate",
                 'price' => 59.9,
-                'image' => "caffee_07",
+                'image' => "coffee_07",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -81,7 +81,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Hot Cappuccino Coffee",
                 'price' => 59.9,
-                'image' => "caffee_08",
+                'image' => "coffee_08",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -90,7 +90,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Medium Hot Mocha Coffee",
                 'price' => 49.9,
-                'image' => "caffee_09",
+                'image' => "coffee_09",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Medium Cold Mocha Coffee with Caramel",
                 'price' => 49.9,
-                'image' => "caffee_10",
+                'image' => "coffee_10",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -108,7 +108,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Medium Cold Mocha Coffee with Chocolate",
                 'price' => 49.9,
-                'image' => "caffee_11",
+                'image' => "coffee_11",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -117,7 +117,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Espresso Coffee",
                 'price' => 29.9,
-                'image' => "caffee_12",
+                'image' => "coffee_12",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -126,7 +126,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Caramel Cappuccino Coffee",
                 'price' => 59.9,
-                'image' => "caffee_13",
+                'image' => "coffee_13",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
@@ -135,7 +135,7 @@ class ProductSeeder extends Seeder
             array(
                 'name' =>  "Large Caramel Coffee",
                 'price' => 59.9,
-                'image' => "caffee_14",
+                'image' => "coffee_14",
                 'category_id' => 1,
                 'stock' => true,
                 'created_at' => Carbon::now(),
