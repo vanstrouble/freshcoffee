@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
-import { categories as categoriesDB } from "../data/categories"
+import axios from 'axios';
 
 const KioskContext = createContext()
 
 const KioskProvider = ({ children }) => {
 
-    const [categories, setCategories] = useState(categoriesDB);
-    const [actualCategory, setActualCategory] = useState(categories[0]);
+    const [categories, setCategories] = useState([]);
+    const [actualCategory, setActualCategory] = useState({});
     const [modal, setModal] = useState(false);
     const [product, setProduct] = useState({});
     const [cart, setCart] = useState([]);
@@ -18,6 +18,20 @@ const KioskProvider = ({ children }) => {
         const total = cart.reduce((acc, product) => acc + (product.price * product.quantity), 0);
         setTotal(total);
     }, [cart]);
+
+    const fetchCategories = async () => {
+        try {
+            const {data} = await axios.get('http://127.0.0.1:8000/api/categories');
+            setCategories(data.data);
+            setActualCategory(data.data[0]);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     const handleClickCategory = id => {
         const category = categories.filter(category => category.id === id)[0];
