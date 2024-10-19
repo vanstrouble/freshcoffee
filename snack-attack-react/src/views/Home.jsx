@@ -1,12 +1,20 @@
 import Product from '../components/Product'
-import { products as data } from '../data/products'
+import axiosInstance from '../config/axios';
 import useKiosk from '../hooks/useKiosk'
+import useSWR from 'swr';
 
 export default function Home() {
 
     const { actualCategory } = useKiosk();
 
-    const products = data.filter(product => product.category_id === actualCategory.id);
+    const fetcher = () => axiosInstance('api/products').then(data => data.data);
+    // eslint-disable-next-line no-unused-vars
+    const { data, error, isLoading } = useSWR('/api/products', fetcher, {
+        refreshInterval: 1000
+    });
+
+    if (isLoading) return <p>Loading...</p>
+    const products = data.data.filter(product => product.category_id === actualCategory.id);
 
     return (
         <>
