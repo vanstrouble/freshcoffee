@@ -1,6 +1,35 @@
+import { createRef, useState } from "react"
 import { Link } from "react-router-dom"
+import axiosInstance from "../config/axios"
+import Alert from "../components/Alert";
 
 export default function Register() {
+
+    const nameRef = createRef();
+    const emailRef = createRef();
+    const passwordRef = createRef();
+    const passwordConfirmationRef = createRef();
+
+    const [errors, setErrors] = useState([]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const data = {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+            password_confirmation: passwordConfirmationRef.current.value,
+        }
+
+        try {
+            const response = await axiosInstance.post('/api/register', data);
+            console.log(response.data);
+        } catch (error) {
+            setErrors(Object.values(error.response.data.errors));
+        }
+    }
+
     return (
         <>
             <h1 className="text-4xl font-black">Create your accout</h1>
@@ -8,7 +37,8 @@ export default function Register() {
             <p>Create your account by filling out the form below</p>
 
             <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
-                <form action="#">
+                <form action="#" onSubmit={handleSubmit} noValidate>
+                    {errors ? errors.map((error, index) => <Alert key={index}>{error}</Alert>) : null}
                     <div className="mb-4">
                         <label
                             htmlFor="name"
@@ -22,6 +52,7 @@ export default function Register() {
                             className="mt-2 w-full p-3 bg-gray-50"
                             name="name"
                             placeholder="Enter your name"
+                            ref={nameRef}
                         />
                     </div>
 
@@ -38,6 +69,7 @@ export default function Register() {
                             className="mt-2 w-full p-3 bg-gray-50"
                             name="email"
                             placeholder="Enter your email"
+                            ref={emailRef}
                         />
                     </div>
 
@@ -54,6 +86,7 @@ export default function Register() {
                             className="mt-2 w-full p-3 bg-gray-50"
                             name="password"
                             placeholder="Enter your password"
+                            ref={passwordRef}
                         />
                     </div>
 
@@ -70,6 +103,7 @@ export default function Register() {
                             className="mt-2 w-full p-3 bg-gray-50"
                             name="password_confirmation"
                             placeholder="Enter your password again"
+                            ref={passwordConfirmationRef}
                         />
                     </div>
 
