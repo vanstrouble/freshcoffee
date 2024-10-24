@@ -1,7 +1,7 @@
 import { createRef, useState } from "react"
 import { Link } from "react-router-dom"
-import axiosInstance from "../config/axios"
 import Alert from "../components/Alert";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
 
@@ -9,6 +9,10 @@ export default function Login() {
     const passwordRef = createRef();
 
     const [errors, setErrors] = useState([]);
+    const { login } = useAuth({
+        middleware: "guest",
+        url: "/"
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,18 +22,7 @@ export default function Login() {
             password: passwordRef.current.value,
         }
 
-        try {
-            const { data } = await axiosInstance.post('/api/login', info);
-            localStorage.setItem('AUTH_TOKEN', data.token);
-            setErrors([]);
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.errors) {
-                setErrors(Object.values(error.response.data.errors));
-            } else {
-                console.error("Unexpected error:", error);
-                setErrors(["An unexpected error occurred. Please try again later."]);
-            }
-        }
+        await login(info, setErrors);
     }
 
     return (
