@@ -21,12 +21,12 @@ class AuthController extends Controller
             ], 422);
         }
 
-        // $user = Auth::user();
+        $user = Auth::user();
 
-        // return [
-        //     'token' => $user->createToken('auth_token')->plainTextToken,
-        //     'user' => $user
-        // ];
+        return [
+            'token' => $user->createToken('auth_token')->plainTextToken,
+            'user' => $user
+        ];
     }
 
     public function logout () {

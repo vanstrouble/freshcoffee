@@ -20,7 +20,8 @@ export default function Login() {
 
         try {
             const { data } = await axiosInstance.post('/api/login', info);
-            console.log(data.token);
+            localStorage.setItem('AUTH_TOKEN', data.token);
+            setErrors([]);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.errors) {
                 setErrors(Object.values(error.response.data.errors));
