@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,12 +10,23 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login (Request $request) {
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Successfully logged in']);
+    public function login (LoginRequest $request) {
+        $data = $request->validated();
+
+        if (!Auth::attempt($data)) {
+            return response([
+                'errors' => [
+                    'email' => ['The provided credentials are incorrect.']
+                ]
+            ], 422);
         }
-        return response()->json(['message' => 'Unauthorized'], 401);
+
+        // $user = Auth::user();
+
+        // return [
+        //     'token' => $user->createToken('auth_token')->plainTextToken,
+        //     'user' => $user
+        // ];
     }
 
     public function logout () {
