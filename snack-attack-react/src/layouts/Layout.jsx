@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar'
 import Summary from '../components/Summary'
 import useKiosk from '../hooks/useKiosk'
 import ModalProduct from '../components/ModalProduct'
+import { useAuth } from '../hooks/useAuth'
 
 const customStyles = {
     content: {
@@ -21,6 +22,11 @@ const customStyles = {
 ReactModal.setAppElement("#root");
 
 export default function Layout() {
+
+    const { user, error } = useAuth({
+        middleware: 'auth',
+        // url: '/login'
+    });
 
     const { modal } = useKiosk();
 
