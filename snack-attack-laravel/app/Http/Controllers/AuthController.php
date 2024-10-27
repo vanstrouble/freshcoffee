@@ -29,9 +29,13 @@ class AuthController extends Controller
         ];
     }
 
-    public function logout () {
-        Auth::logout();
-        return response()->json(['message' => 'Successfully logged out']);
+    public function logout (Request $request) {
+        $user = $request->user();
+        $user->currentAccessToken()->delete();
+
+        return [
+            'user' => null
+        ];
     }
 
     public function register(RegisterRequest $request) {
