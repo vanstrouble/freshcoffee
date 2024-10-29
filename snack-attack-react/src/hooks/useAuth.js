@@ -58,15 +58,19 @@ export const useAuth = ({ middleware, url }) => {
                 })
                 .catch(console.log);
         }
-        window.location.pathname = "/auth/login"; //Redirigir
+        window.location.pathname = "/auth/login";
     };
 
-    const register = () => {
-        // register logic
+    const register = async (info, setErrors) => {
+        try {
+            const { data } = await axiosInstance.post('/api/register', info);
+            localStorage.setItem('AUTH_TOKEN', data.token);
+            setErrors([]);
+            await mutate();
+        } catch (error) {
+            setErrors(Object.values(error.response.data.errors));
+        }
     };
-
-    console.log(user);
-    console.log(error);
 
     useEffect(() => {
         if (user && middleware === "guest" && url) {
