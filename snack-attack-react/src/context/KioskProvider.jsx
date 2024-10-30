@@ -70,6 +70,30 @@ const KioskProvider = ({ children }) => {
         toast.error('Product removed from cart');
     }
 
+    const handleSubmitNewOrder = async () => {
+        const token = localStorage.getItem("AUTH_TOKEN");
+
+        try {
+            await axiosInstance.post('/api/orders', {
+                // products: cart.map(product => ({
+                //     id: product.id,
+                //     quantity: product.quantity,
+                // }))
+                total
+            },
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            // setCart([]);
+            // toast.success('Order completed successfully');
+        } catch (error) {
+            console.error(error);
+            toast.error('An error occurred while trying to complete the order');
+        }
+    }
+
     return (
         <KioskContext.Provider
             value={{
@@ -85,6 +109,7 @@ const KioskProvider = ({ children }) => {
                 handleUpdateCart,
                 handleRemoveCart,
                 total,
+                handleSubmitNewOrder
             }}>
             {children}
         </KioskContext.Provider>

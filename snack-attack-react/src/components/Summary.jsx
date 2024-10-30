@@ -5,9 +5,19 @@ import { formatPrice } from '../helpers';
 
 export default function Summary() {
 
-    const { cart, total } = useKiosk();
+    const { cart, total, handleSubmitNewOrder } = useKiosk();
 
     const checkCart = () => cart.length === 0;
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        handleSubmitNewOrder();
+
+        // if (checkCart()) return;
+
+        // alert('Checkout completed successfully');
+    };
 
     return (
         <aside className="md:w-72 h-screen overflow-y-scroll p-5">
@@ -37,7 +47,7 @@ export default function Summary() {
                 Total: {formatPrice(total)}
             </p>
 
-            <form action="#" className="w-full">
+            <form action="#" className="w-full" onSubmit={handleSubmit}>
                 <div className="mt-5">
                     <input
                         type="submit"
