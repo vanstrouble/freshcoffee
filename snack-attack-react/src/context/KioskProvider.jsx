@@ -79,7 +79,13 @@ const KioskProvider = ({ children }) => {
                 //     id: product.id,
                 //     quantity: product.quantity,
                 // }))
-                total
+                total,
+                products: cart.map(product => {
+                    return {
+                        id: product.id,
+                        quantity: product.quantity,
+                    }
+                })
             },
             {
                 headers: {
