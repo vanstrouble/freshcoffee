@@ -1,22 +1,20 @@
 import useKiosk from "../hooks/useKiosk"
 import SummaryProduct from "./SummaryProduct";
 import { formatPrice } from '../helpers';
+import { useAuth } from "../hooks/useAuth";
 
 
 export default function Summary() {
 
     const { cart, total, handleSubmitNewOrder } = useKiosk();
+    const { logout } = useAuth({});
 
     const checkCart = () => cart.length === 0;
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        handleSubmitNewOrder();
-
-        // if (checkCart()) return;
-
-        // alert('Checkout completed successfully');
+        handleSubmitNewOrder(logout);
     };
 
     return (

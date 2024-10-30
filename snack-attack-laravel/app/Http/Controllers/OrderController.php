@@ -46,7 +46,7 @@ class OrderController extends Controller
         OrderProduct::insert($order_products);
 
         return [
-            'message' => 'Order created successfully'
+            'message' => 'Order created successfully, it will be processed soon.'
         ];
     }
 
