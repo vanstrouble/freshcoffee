@@ -38,6 +38,7 @@ const Router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
             {
+                index: true,
                 element: <Orders />
             },
             {
