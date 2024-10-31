@@ -23,6 +23,7 @@ ReactModal.setAppElement("#root");
 
 export default function Layout() {
 
+    // eslint-disable-next-line no-unused-vars
     const { user, error } = useAuth({
         middleware: 'auth',
         // url: '/login'

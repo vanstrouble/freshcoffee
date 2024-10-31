@@ -4,6 +4,9 @@ import AuthLayout from './layouts/AuthLayout'
 import Login from './views/Login'
 import Register from './views/Register'
 import Home from './views/Home'
+import AdminLayout from './layouts/AdminLayout'
+import Orders from './views/Orders'
+import Products from './views/Products'
 
 const Router = createBrowserRouter([
     {
@@ -27,6 +30,19 @@ const Router = createBrowserRouter([
             {
                 path: '/auth/register',
                 element: <Register />
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                element: <Orders />
+            },
+            {
+                path: '/admin/products',
+                element: <Products />
             }
         ]
     }
