@@ -1,56 +1,50 @@
-import { Outlet } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import ReactModal from 'react-modal'
-import Sidebar from '../components/Sidebar'
-import Summary from '../components/Summary'
-import useKiosk from '../hooks/useKiosk'
-import ModalProduct from '../components/ModalProduct'
-import { useAuth } from '../hooks/useAuth'
+import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ReactModal from "react-modal";
+import Sidebar from "../components/Sidebar";
+import Summary from "../components/Summary";
+import useKiosk from "../hooks/useKiosk";
+import ModalProduct from "../components/ModalProduct";
+import { useAuth } from "../hooks/useAuth";
 
 const customStyles = {
-    content: {
-        top: "50%",
-        left: "50%",
-        right: "auto",
-        bottom: "auto",
-        marginRight: "-50%",
-        transform: "translate(-50%, -50%)",
-    },
+	content: {
+		top: "50%",
+		left: "50%",
+		right: "auto",
+		bottom: "auto",
+		marginRight: "-50%",
+		transform: "translate(-50%, -50%)",
+	},
 };
 
 ReactModal.setAppElement("#root");
 
 export default function Layout() {
+	useAuth({
+		middleware: "auth",
+	});
 
-    // eslint-disable-next-line no-unused-vars
-    const { user, error } = useAuth({
-        middleware: 'auth',
-        // url: '/login'
-    });
+	const { modal } = useKiosk();
 
-    const { modal } = useKiosk();
+	return (
+		<>
+			<div className="md:flex">
+				<Sidebar />
 
-    return (
-        <>
-            <div className='md:flex'>
-                <Sidebar />
+				<main className="flex-1 h-screen overflow-y-scroll bg-gray-100 p-3">
+					<Outlet />
+				</main>
 
-                <main className='flex-1 h-screen overflow-y-scroll bg-gray-100 p-3'>
-                    <Outlet />
-                </main>
+				<Summary />
+			</div>
 
-                <Summary />
-            </div>
+			<ReactModal isOpen={modal} style={customStyles}>
+				<ModalProduct></ModalProduct>
+			</ReactModal>
 
-            <ReactModal
-                isOpen={modal}
-                style={customStyles}
-            >
-                <ModalProduct></ModalProduct>
-            </ReactModal>
-
-            <ToastContainer />
-        </>
-    )
+			<ToastContainer />
+		</>
+	);
 }
