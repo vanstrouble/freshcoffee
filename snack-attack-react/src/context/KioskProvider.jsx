@@ -20,8 +20,14 @@ const KioskProvider = ({ children }) => {
     }, [cart]);
 
     const fetchCategories = async () => {
+        const token = localStorage.getItem("AUTH_TOKEN")
+
         try {
-            const {data} = await axiosInstance('/api/categories');
+            const {data} = await axiosInstance('/api/categories', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             setCategories(data.data);
             setActualCategory(data.data[0]);
         } catch (error) {
