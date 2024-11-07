@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import useKiosk from '../hooks/useKiosk';
 import axiosInstance from "../config/axios";
 import { formatPrice } from "../helpers";
 
@@ -12,6 +13,7 @@ export default function Orders() {
 		});
 
 	const { data, error, isLoading } = useSWR("/api/orders", fetcher, {refreshInterval: 1000});
+	const { handleClickCompleteOrder } = useKiosk();
 
 	if (isLoading) return <p>Loading...</p>;
 	if (error) return <p>Error loading orders</p>;
@@ -63,6 +65,7 @@ export default function Orders() {
 								className="bg-indigo-600 hover:bg-indigo-900 text-white w-full p-3 uppercase font-bold rounded-md cursor-pointer mt-4"
 								value="Checkout"
 								// disabled={checkCart()}
+								onClick={() => handleClickCompleteOrder(order.id)}
 							>
 								Complete
 							</button>
