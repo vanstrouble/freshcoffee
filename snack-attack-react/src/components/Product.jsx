@@ -8,7 +8,7 @@ export default function Product({
 	aviableButton = false,
 }) {
 	const { image, name, price } = product;
-	const { handleClickModal, handleSetProduct } = useKiosk();
+	const { handleClickModal, handleSetProduct, handleClickProductOutOfStock } = useKiosk();
 
 	return (
 		<div className="border p-3 shadow bg-white rounded-sm flex flex-col justify-between h-full">
@@ -41,8 +41,7 @@ export default function Product({
                         <button
                             className="bg-red-600 hover:bg-red-800 text-white w-full mt-5 p-3 uppercase font-bold rounded-md"
                             onClick={() => {
-								handleClickModal();
-								handleSetProduct(product);
+                                handleClickProductOutOfStock(product.id);
 							}}
 						>
 							Product Out of Stock
@@ -56,6 +55,7 @@ export default function Product({
 
 Product.propTypes = {
 	product: PropTypes.shape({
+		id: PropTypes.string.isRequired,
 		image: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
 		price: PropTypes.number.isRequired,

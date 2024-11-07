@@ -122,6 +122,19 @@ const KioskProvider = ({ children }) => {
         }
     }
 
+    const handleClickProductOutOfStock = async id => {
+        const token = localStorage.getItem("AUTH_TOKEN");
+        try {
+            await axiosInstance.put(`/api/products/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <KioskContext.Provider
             value={{
@@ -138,7 +151,8 @@ const KioskProvider = ({ children }) => {
                 handleRemoveCart,
                 total,
                 handleSubmitNewOrder,
-                handleClickCompleteOrder
+                handleClickCompleteOrder,
+                handleClickProductOutOfStock
             }}>
             {children}
         </KioskContext.Provider>
